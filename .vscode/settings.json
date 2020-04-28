@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "pizza_venv\\Scripts\\python.exe",
+    "git.ignoreLimitWarning": true
+}

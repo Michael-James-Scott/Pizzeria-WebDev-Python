@@ -1,0 +1,22 @@
+{%extends "pizzas/base.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <p>Pizzas</p>
+    <ul>
+        {% for pizza in pizza_list %}
+        
+            <li>
+                <a href="{% url 'pizzas:pizza' pizza.id %}">
+                    {{pizza}}
+                </a>
+                    
+            </li>
+
+        {% empty %}
+            <li>There are no pizzas added yet..</li>
+        {% endfor %}
+    </ul>
+    
+{% endblock content%}

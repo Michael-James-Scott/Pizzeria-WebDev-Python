@@ -1,0 +1,41 @@
+{%extends "pizzas/base.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<HTML>
+
+    <HEAD>
+    
+    <TITLE>Pizzeria</TITLE>
+    
+    </HEAD>
+    
+    <BODY>
+   
+    <CENTER><IMG SRC="{% static 'images/restaurant.jpg' %}" ALIGN="BOTTOM"> </CENTER>
+    
+    <HR>
+        
+    <H1 style="text-align:center">Welcome to the Pizzeria!</H1>
+    
+    <H2 style="text-align:center">We have all the Pizzas you want</H2>
+    
+    
+    
+    <P> This is a new paragraph!
+    
+    <P style="text-align:center"> <B>This is a new paragraph!</B>
+    
+    <BR> <B><I>This is a new sentence without a paragraph break, in bold italics.</I></B>
+
+    <P> Send me mail at <a href="mailto:mike_scott@baylor.edu">mike_scott@baylor.edu</a> </P>
+    <HR>
+    
+    </BODY>
+    
+    </HTML>
+    
+     
+
+  {% endblock content%}
