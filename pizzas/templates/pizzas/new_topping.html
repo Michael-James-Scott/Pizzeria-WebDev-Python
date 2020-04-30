@@ -5,16 +5,17 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
         <p><a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a></p>
-        <p>Add A New Comment</p>
+        <p>Add A New Topping</p>
 
-        <form action="{% url 'pizzas:new_comment' pizza.id %}" method='post'>
+        <form action="{% url 'pizzas:new_topping' pizza.id %}" method='post'>
             {% csrf_token %}
             {{ form.as_p }}
+
             <table align="center">
                 <tr>
                   <td>
                       <button name="submit" style="align-items: center;">
-                        Add Comment</button>
+                        Add Topping</button>
                     </td>
                     </tr>
                     </table>

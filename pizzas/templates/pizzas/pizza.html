@@ -19,36 +19,43 @@
     {% elif pizza.text == "BBQ Pizza" %}
     <center><IMG SRC="{% static 'images/bbq.jpg' %}" ALIGN="center" style="width:400px;height:400px;"></center>
     {% endif %}
-    <ul>
-        {% for comment in pizza.comment_set.all %}
-        <li> 
-            <h4 style="text-align:center">{{ comment.date_added|date:'M d, Y H:i' }}</h4>
-            <h4 style="text-align:center">{{ comment.text|linebreaks}}</h4>
-        </li>     
+
+
+
+    <ul class="b">
+        <h4>Toppings:</h4>
+        {% for topping in toppings %}
+        <li style="font-size: 1em ; font-weight: bolder; color:white;"> 
+            {{ topping.get_top_choice_display }}  
+            
+        </li>
         {% empty %}
-            <li>There are no comments for this pizza yet..</li>
+            <li style="font-size: 1em ; font-weight: bolder; color:white;">
+                There are no toppings for this pizza yet..</li>
         {% endfor %}
     </ul>
-    <ul>
-        {% for topping in toppings %}
-        <li> 
-            <h4 style="text-align:center">{{ topping.text|linebreaks}}</h4>
-            {% if topping.text == "Bacon" %}
-            <center><IMG SRC="{% static 'images/bacon.png' %}" ALIGN="center" style="width:50px;height:50px;"></center>
-            {% elif topping.text == "Pepperoni" %}
-            <center><IMG SRC="{% static 'images/pepperoni.png' %}" ALIGN="center" style="width:50px;height:50px;"></center>
-            {% elif topping.text == "Sausage" %}
-            <center><IMG SRC="{% static 'images/sausage.png' %}" ALIGN="center" style="width:50px;height:50px;"></center>
-            {% endif %}
+    <ul class="b">
+        <li>
+            <a href="{% url 'pizzas:new_topping' pizza.id%}" >Add A New Topping</a>
         </li>
-    
-    </ul>   
-        {% empty %}
-            <li>There are no toppings for this pizza yet..</li>
-        {% endfor %}
-    
-        <p>
-            <a href="{% url 'pizzas:new_comment' pizza.id%}">Add a new Comment</a>
-        </p>
+    </ul>
 
+
+
+    <ul class="a">
+        <h4>Comments:</h4>
+            {% for comment in pizza.comment_set.all %}
+            <li> 
+                <p style="text-align:center">Date: {{ comment.date_added|date:'M d, Y H:i' }} <br> Comment: {{ comment.text}}<p>
+                
+            </li>     
+            {% empty %}
+                <li style="font-size: 1em ; font-weight: bolder; color:white;">There are no comments for this pizza yet..</li>
+            {% endfor %}
+    </ul>
+    <ul class="b">
+        <li>
+            <a href="{% url 'pizzas:new_comment' pizza.id%}">Add A New Comment</a>
+        </li>
+        </ul>
 {% endblock content%}

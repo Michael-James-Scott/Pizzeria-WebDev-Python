@@ -9,8 +9,14 @@
         <form action="{% url 'pizzas:new_pizza' %}" method='post'>
             {% csrf_token %}
             {{ form.as_p }}
-
-            <button name="submit">Add Pizza</button>
+            <table align="center">
+                <tr>
+                  <td>
+                      <button name="submit" style="align-items: center;">
+                        Add Pizza</button>
+                    </td>
+                    </tr>
+                    </table>
         </form>
 
 

@@ -1,11 +1,11 @@
 from django import forms 
-from .models import Pizza, Comment
+from .models import Pizza, Comment, Topping
 
 class addPizza(forms.ModelForm):
     class Meta:
         model = Pizza
         fields = ['text']
-        labels = {'text': ''}
+        labels = {'text': 'Pizza:'}
 
 class addComment(forms.ModelForm):
     class Meta:
@@ -14,3 +14,11 @@ class addComment(forms.ModelForm):
         labels = {'text': 'Comment:'}
 
         widgets = {'text': forms.Textarea(attrs={'cols':80})}
+
+class addTopping(forms.ModelForm):
+    class Meta:
+        model = Topping
+        fields = ['top_choice']
+        labels = {'top_choice': 'Topping:'}
+
+        

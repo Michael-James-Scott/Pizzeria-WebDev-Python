@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import addPizza, addComment
+from .forms import addPizza, addComment, addTopping
 from .models import Pizza
 
 # Create your views here.
@@ -52,3 +52,20 @@ def new_comment(request, pizza_id):
 
     context = {'form':form, 'pizza': pizza}
     return render(request, 'pizzas/new_comment.html', context)
+
+def new_topping(request, pizza_id):
+    pizza = Pizza.objects.get(id=pizza_id)
+    if request.method != 'POST':
+        form = addTopping()
+    else:
+        form = addTopping(data=request.POST)
+
+        if form.is_valid():
+            top = form.save(commit=False)
+            top.pizza = pizza
+            top.save()
+            form.save()
+            return redirect('pizzas:pizza', pizza_id=pizza_id)
+
+    context = {'form':form, 'pizza': pizza}
+    return render(request, 'pizzas/new_topping.html', context)
