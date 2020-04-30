@@ -1,4 +1,55 @@
 body {
-    background-image: url('bg2.jpg');
-  
+    background: url(bg2.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+ul {
+    text-align: center;
+    list-style: inside;
+  }
+h1 {
+    color: white;
+    text-align: center;
 }
+h2 {
+    color: white;
+    text-align: center;
+}
+h3 {
+    color: white;
+    text-align: center;
+}
+h4 {
+    color: white;
+    text-align: center;
+}
+p {
+    color: white;
+    text-align: center;
+}
+ul {
+    list-style: square inside url("piz.png");
+    list-style-position: inside;
+  }
+/* unvisited link */
+a:link {
+    color: blue;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: whie;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: red;
+  }
+  
+  /* selected link */
+  a:active {
+    color: green;
+  }

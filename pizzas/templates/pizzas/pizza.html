@@ -3,17 +3,52 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <p>Pizza: {{ pizza }}</p>
+    <h3 style="text-align:center">{{ pizza }} </h3>
+    {% if pizza.text == "Neapolitan Pizza" %}
+    <center><IMG SRC="{% static 'images/np.jpg' %}" ALIGN="center" style="width:400px;height:400px;"></center>
+    {% elif pizza.text == "Chicago Pizza" %}
+    <center><IMG SRC="{% static 'images/chicago.jpg' %}" ALIGN="center" style="width:400px;height:400px;"></center>
+    {% elif pizza.text == "New York-Style Pizza" %}
+    <center><IMG SRC="{% static 'images/newyork.jpg' %}" ALIGN="center" style="width:400px;height:400px;"></center>
+    {% elif pizza.text == "St. Louis-Style Pizza" %}
+    <center><IMG SRC="{% static 'images/stl.jpg' %}" ALIGN="center" style="width:400px;height:400px;"></center>
+    {% elif pizza.text == "Sicilian Pizza" %}
+    <center><IMG SRC="{% static 'images/sicil.jpg' %}" ALIGN="center" style="width:400px;height:400px;"></center>
+    {% elif pizza.text == "Greek Pizza" %}
+    <center><IMG SRC="{% static 'images/greek.jpg' %}" ALIGN="center" style="width:400px;height:400px;"></center>
+    {% elif pizza.text == "BBQ Pizza" %}
+    <center><IMG SRC="{% static 'images/bbq.jpg' %}" ALIGN="center" style="width:400px;height:400px;"></center>
+    {% endif %}
+    <ul>
+        {% for comment in pizza.comment_set.all %}
+        <li> 
+            <h4 style="text-align:center">{{ comment.date_added|date:'M d, Y H:i' }}</h4>
+            <h4 style="text-align:center">{{ comment.text|linebreaks}}</h4>
+        </li>     
+        {% empty %}
+            <li>There are no comments for this pizza yet..</li>
+        {% endfor %}
+    </ul>
     <ul>
         {% for topping in toppings %}
         <li> 
-            <p>{{ topping.date_added|date:'M d, Y H:i' }}</p>
-            <p>{{ topping.text|linebreaks }}</p>
+            <h4 style="text-align:center">{{ topping.text|linebreaks}}</h4>
+            {% if topping.text == "Bacon" %}
+            <center><IMG SRC="{% static 'images/bacon.png' %}" ALIGN="center" style="width:50px;height:50px;"></center>
+            {% elif topping.text == "Pepperoni" %}
+            <center><IMG SRC="{% static 'images/pepperoni.png' %}" ALIGN="center" style="width:50px;height:50px;"></center>
+            {% elif topping.text == "Sausage" %}
+            <center><IMG SRC="{% static 'images/sausage.png' %}" ALIGN="center" style="width:50px;height:50px;"></center>
+            {% endif %}
         </li>
-        
+    
+    </ul>   
         {% empty %}
             <li>There are no toppings for this pizza yet..</li>
         {% endfor %}
-    </ul>
+    
+        <p>
+            <a href="{% url 'pizzas:new_comment' pizza.id%}">Add a new Comment</a>
+        </p>
 
 {% endblock content%}

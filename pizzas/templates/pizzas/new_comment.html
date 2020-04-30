@@ -1,0 +1,18 @@
+{%extends "pizzas/base.html" %}
+
+    {% block content %}
+    {% load static %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+        <p><a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a></p>
+        <p>Add a new Comment</p>
+
+        <form action="{% url 'pizzas:new_comment' pizza.id %}" method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button name="submit">Add Comment</button>
+        </form>
+
+
+    {% endblock content %}

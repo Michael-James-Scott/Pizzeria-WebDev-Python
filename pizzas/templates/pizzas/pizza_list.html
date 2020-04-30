@@ -3,7 +3,7 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <p>Pizzas</p>
+    <center><h3>Pizzas</h3></center>
     <ul>
         {% for pizza in pizza_list %}
         
@@ -18,5 +18,5 @@
             <li>There are no pizzas added yet..</li>
         {% endfor %}
     </ul>
-    
+    <a href="{% url 'pizzas:new_pizza' %}">Add a new Pizza</a>
 {% endblock content%}

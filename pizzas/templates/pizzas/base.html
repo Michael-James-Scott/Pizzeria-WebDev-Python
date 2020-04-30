@@ -1,7 +1,29 @@
-<p>
-    <a href="{% url 'pizzas:index' %}">Pizzeria</a>
-    <a href="{% url 'pizzas:pizza_list' %}">Pizzas</a>
-    </p>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<HTML>
+
+    <HEAD><TITLE>Mike's Pizzeria</TITLE></HEAD>
     
-    {% block content %}
-    {% endblock content%}
+    <body>
+        <div>
+            <center><img src="{% static 'images/mikes_pizza.jpg' %}" ALIGN="bottom"> </center>
+            <h1 style="text-align:center; color:white;"><a href="{% url 'pizzas:index' %}">Home</a></h1>
+            <h2 style="text-align:center; color:white;"><a href="{% url 'pizzas:pizza_list' %}">Pizza Menu</a></h2>
+        </div>
+        <div>
+            <div>
+                <div>
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+        <div>
+            <hr>
+            <p>Contact Information:</p>
+            <P>Email me at <a href="mailto:mike_scott@baylor.edu">mike_scott@baylor.edu</a></P>
+        </div>
+    </body>
+</HTML>
+    
+     

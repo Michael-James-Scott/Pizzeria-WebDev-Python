@@ -15,10 +15,19 @@ class Topping(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        # it allows us to set a special attribute telling Django to use 'Entries'
-        # when it needs to refer to more than one entry. Without this, Django
-        #would refer to multiple entries as 'Entrys'.
         verbose_name_plural = 'toppings'
+        
+    def __str__(self):
+        return f"{self.text[:50]}..."
+
+class Comment(models.Model):
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    text = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+      
+        verbose_name_plural = 'comments'
         
     def __str__(self):
         return f"{self.text[:50]}..."
