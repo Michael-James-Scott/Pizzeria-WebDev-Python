@@ -8,7 +8,7 @@
         {% for pizza in pizza_list %}
         
             <li>
-                <a href="{% url 'pizzas:pizza' pizza.id %}">
+                <a href="{% url 'pizzas:pizza' pizza.id %}" class="piz">
                     {{pizza}}
                 </a>
                     
@@ -20,7 +20,9 @@
     </ul>
     <ul class="b">
         <li>
-            <a href="{% url 'pizzas:new_pizza' %}">Add a new Pizza</a>
+            <a href="{% url 'pizzas:new_pizza' %}">
+                <img src="{% static 'images/button_add-a-pizza.png' %}" width="width" height="height">
+            </a>
         </li>
         </ul>
     

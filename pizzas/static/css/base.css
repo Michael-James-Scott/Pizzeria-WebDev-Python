@@ -13,10 +13,12 @@ ul {
 h1 {
     color: white;
     text-align: center;
+    font-size: 36px;
 }
 h2 {
     color: white;
     text-align: center;
+    font-size: 30px;
 }
 h3 {
     color: white;
@@ -25,23 +27,22 @@ h3 {
 h4 {
     color: white;
     text-align: center;
+    font-size: 40px;
 }
 p {
     color: white;
     text-align: center;
 }
 ul.a {
-    list-style: square inside url("piz.png");
-    list-style-position: inside;
-    margin-left: 20px;
-    line-height: 20px;
-    padding-left: 20px;
-
+    list-style: url("piz.png");
+    list-style-position: outside;
+    margin: 0; padding: 0;
   }
 ul.b {
     list-style-type: none;
-    list-style-position: inside;
+    list-style-position: outside;
   }
+  
 /* unvisited link */
 a:link {
     color: blue;
@@ -49,7 +50,7 @@ a:link {
   
   /* visited link */
   a:visited {
-    color: whie;
+    color: white;
   }
   
   /* mouse over link */
@@ -60,6 +61,13 @@ a:link {
   /* selected link */
   a:active {
     color: green;
+  }
+
+  a.piz {
+  font-size:18px;
+  }
+  a.top{
+    font-size:14px;
   }
 
   

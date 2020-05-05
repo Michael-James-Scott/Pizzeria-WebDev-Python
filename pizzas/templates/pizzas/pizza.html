@@ -2,6 +2,7 @@
 
 {% block content %}
 {% load static %}
+
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <h3 style="text-align:center">{{ pizza }} </h3>
     {% if pizza.text == "Neapolitan Pizza" %}
@@ -20,30 +21,35 @@
     <center><IMG SRC="{% static 'images/bbq.jpg' %}" ALIGN="center" style="width:400px;height:400px;"></center>
     {% endif %}
 
-
+    <table align="center">
+        <tr>
+          <td>
 
     <ul class="b">
-        <h4>Toppings:</h4>
+        <h4 style="font-size: 40px ; font-weight: bolder; color:forestgreen;">
+            Toppings:</h4>
         {% for topping in toppings %}
-        <li style="font-size: 1em ; font-weight: bolder; color:white;"> 
+        <li style="font-size: 20px ; font-weight: normal; color:forestgreen;"> 
             {{ topping.get_top_choice_display }}  
             
         </li>
         {% empty %}
-            <li style="font-size: 1em ; font-weight: bolder; color:white;">
+            <li style="font-size: 2em ; font-weight: normal; color:forestgreen;">
                 There are no toppings for this pizza yet..</li>
         {% endfor %}
     </ul>
     <ul class="b">
         <li>
-            <a href="{% url 'pizzas:new_topping' pizza.id%}" >Add A New Topping</a>
+            <a href="{% url 'pizzas:new_topping' pizza.id %}">
+                <img src="{% static 'images/button_add-a-topping.png' %}" width="width" height="height">
+            </a>
         </li>
     </ul>
 
 
 
     <ul class="a">
-        <h4>Comments:</h4>
+        <h4 style="font-size: 40px ; font-weight: bolder; color: white;">Comments:</h4>
             {% for comment in pizza.comment_set.all %}
             <li> 
                 <p style="text-align:center">Date: {{ comment.date_added|date:'M d, Y H:i' }} <br> Comment: {{ comment.text}}<p>
@@ -55,7 +61,14 @@
     </ul>
     <ul class="b">
         <li>
-            <a href="{% url 'pizzas:new_comment' pizza.id%}">Add A New Comment</a>
+            <a href="{% url 'pizzas:new_comment' pizza.id%}">
+                <img src="{% static 'images/button_add-a-comment.png' %}" width="width" height="height">
+            </a>
         </li>
         </ul>
+
+        </td>
+        </tr>
+        </table>
+
 {% endblock content%}
